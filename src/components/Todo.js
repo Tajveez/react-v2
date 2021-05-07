@@ -4,10 +4,14 @@ import Modal from "./Modal";
 
 const Todo = ({ title }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+
   function deleteHandler() {
     setModalIsOpen(!modalIsOpen);
   }
 
+  function closeModal() {
+    setModalIsOpen(false);
+  }
   return (
     <div className="card">
       <h2>{title}</h2>
@@ -17,7 +21,7 @@ const Todo = ({ title }) => {
         </button>
       </div>
       <div>
-        {modalIsOpen && <Modal />}
+        {modalIsOpen && <Modal onAction={closeModal} />}
         {modalIsOpen && <Backdrop />}
       </div>
     </div>
